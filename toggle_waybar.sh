@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Get the PID of Waybar, ignoring this script
-WAYBAR_PID=$(ps aux | grep -v "grep" | grep -v "$(basename "$0")" | grep "waybar" | awk '{print $2}')
+# Get the PID of Waybar, excluding the script itself
+WAYBAR_PID=$(pgrep -x waybar)
 
 # Check if Waybar is running
 if [ -n "$WAYBAR_PID" ]; then
